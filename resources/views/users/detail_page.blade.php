@@ -14,10 +14,66 @@
     $allCategories = Categories::get();
 
     ?>
+    <!-- Google Translate Script -->
+
+
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'th', 
+        includedLanguages: 'en,th', 
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+    }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
+ /* Google Translate  Styles */
+ 
+    .translate-widget {
+    position: fixed;
+    top: 15px; 
+    right: 15px; 
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px; 
+    padding: 2px 6px; 
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: scale(0.85); 
+    transform-origin: top right; 
+}
+.goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 11px !important;
+}
+
+.goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 2px !important;
+    border-radius: 10px !important;
+    font-size: 11px !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value {
+    color: #333 !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+}
+
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
 
 .header-section {
-    background: linear-gradient(135deg, #6cd4e2ff 0%, #8fd8e0ff 100%);
+    background: linear-gradient(135deg, {{ $config->color1 ?? '#6cd4e2ff' }} 0%, {{ $config->color2 ?? '#8fd8e0ff' }} 100%);
     padding: 15px 15px 20px 15px;
     border-radius: 0 0 25px 25px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
@@ -26,7 +82,11 @@
     z-index: 100;
     margin: -15px -15px 15px -15px;
 }
-
+.btn-primary {
+    background: linear-gradient(to right, {{ $config->color1 ?? '#007bff' }}, {{ $config->color2 ?? '#0056b3' }}) !important;
+    border: none !important;
+    color: white !important;
+}
 .page-title {
     color: white;
     font-size: 24px;
@@ -451,7 +511,10 @@
     }
 }
     </style>
-
+    <!-- Google Translate Widget -->
+<div class="translate-widget">
+    <div id="google_translate_element"></div>
+</div>
     <!-- Header Section -->
     <div class="header-section">
         <h1 class="page-title">
